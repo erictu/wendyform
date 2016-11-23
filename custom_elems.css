@@ -1,4 +1,4 @@
 /* Everything from here on is custom, not part of the jumbotron template.*/
-label {
+.radio {
     font-weight: normal !important;
 }
