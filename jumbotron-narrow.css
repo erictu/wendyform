@@ -77,8 +77,3 @@ body {
     border-bottom: 0;
   }
 }
-
-/* Everything from here on is custom, not part of the jumbotron template.*/
-label {
-    font-weight: normal !important;
-}
