@@ -52,7 +52,7 @@
         <br>
       <form>
         <h5 class="text-muted"> อายุ (Age): </h5>
-        <input type="text" class="form-control">
+        <input type="text" class="form-control" id="ageinput">
       </form>
         <br>
       <form>
@@ -85,7 +85,7 @@
                    Sexual Abuse (e.g. touches you inappropriately or without your consent)
                  </label>
                  <label class="unbold">
-                   <input type="checkbox" id="fin_abuse">
+                   <input type="checkbox">
                    หาผู้ช่วยเจรจาไกล่เกลี่ย/การล่วงละเมิดทางทรัพย์สิน (ตัวอย่าง: ผู้กระทำข่มขู่เรียกเงินจากคุณ) <br>
                    Financial Abuse (e.g. your abuser withholds money from you or takes your money without permission))
                  </label>
@@ -475,12 +475,10 @@
     </div> <!-- /container -->
 
     <script>
+
       //Submit button links to relevant resources
       function submit() {
         //TITLE AND TEXT TO SHOW THE USER GOES HERE
-        var fin_title = "Financial Advice";
-        var fin_body = "Here's Some Financial Advice";
-
         var compoundHead="HOPE THIS WORKS"
         var compoundResult="IT WORKED"
 
@@ -489,19 +487,18 @@
           createResult(compoundHead, compoundResult)
         }
 
-        if (document.getElementById("fin_abuse").checked) {
-          createResult(fin_title, fin_body);
-        }
-
         if (document.getElementById("finad_emo").checked) {
           createResult("wendy", "cheung")
         }
 
         //LOGIC FOR AGE HERE
-        
+        if (parseInt(document.getElementById("ageinput").value) <18) {
+          createResult("UNDER", "AGE")
+        }
 
       }
 
+      //Creates Result Panel in Popup Window (Also called modal)
       function createResult(headtext, bodytext) {
         var pan = document.createElement("div");
         pan.className="panel panel-default"
@@ -514,7 +511,6 @@
         var panbody_text = document.createTextNode(bodytext);
         panbody.appendChild(panbody_text)
         panhead.appendChild(panhead_text)
-
 
         pan.appendChild(panhead)
         pan.appendChild(panbody)
