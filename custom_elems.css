@@ -7,6 +7,9 @@
     font-weight: normal !important;
 }
 
+.unbold {
+    font-weight: normal !important;
+}
 
 .jumbotron {
     position: relative;
