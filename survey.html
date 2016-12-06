@@ -82,7 +82,7 @@
           การล่วงละเมิดทางเพศ (ตัวอย่าง: สัมผัสอย่างไม่เหมาะสม หรือ สัมผัสคุณโดยไม่ได้รับอนุญาต) <br>
           Sexual Abuse (e.g. touches you inappropriately or without your consent)
         </label>
-          <label class="radio"><input type="radio">
+          <label class="radio"><input type="radio" id="fin_abuse">
           หาผู้ช่วยเจรจาไกล่เกลี่ย/การล่วงละเมิดทางทรัพย์สิน (ตัวอย่าง: ผู้กระทำข่มขู่เรียกเงินจากคุณ) <br>
           Financial Abuse (e.g. your abuser withholds money from you or takes your money without permission))
         </label>
@@ -141,7 +141,7 @@
               <button type="button" class="close" data-dismiss="modal">&times;</button>
               <h4 class="modal-title">Here's some information to help you:</h4>
             </div>
-            <div class="modal-body">
+            <div class="modal-body" id="modalbod">
               <p>TODO: put in logic</p>
             </div>
             <div class="modal-footer">
@@ -158,6 +158,33 @@
       //Submit button links to relevant resources
       function submit() {
         console.log("TODO: INSERT LOGIC")
+        var fin_title = "Financial Advice";
+        var fin_body = "Here's Some Financial Advice";
+
+        if (document.getElementById("fin_abuse").checked) {
+          addTextPanel(fin_title, fin_body);
+        }
+        // addTextPanel("test", "testbody");
+        // addTextPanel("test2", "testbody2");
+
+      }
+
+      function addTextPanel(headtext, bodytext) {
+        var pan = document.createElement("div");
+        pan.className="panel panel-default"
+        var panhead = document.createElement("div");
+        panhead.className="panel-heading"
+        var panbody = document.createElement("div");
+        panbody.className="panel-body"
+
+        var panhead_text = document.createTextNode(headtext);
+        var panbody_text = document.createTextNode(bodytext);
+        panbody.appendChild(panbody_text)
+        panhead.appendChild(panhead_text)
+
+        pan.appendChild(panbody)
+        pan.appendChild(panhead)
+        document.getElementById('modalbod').appendChild(pan);
       }
 
       //Submit button clears buttons
