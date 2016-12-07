@@ -70,7 +70,7 @@
             </div>
             <div id="collapse1" class="panel-collapse collapse" role="tabpanel">
               <div class="panel-body">
-                 <label class="unbold"><input type="checkbox">ความช่วยเหลือทางการเงิน (Financial Advice)</label><br>
+                 <label class="unbold"><input type="checkbox" id="emo_finad">ความช่วยเหลือทางการเงิน (Financial Advice)</label><br>
                  <label class="unbold"><input type="checkbox">สังคมสงเคราะห์ ระบุ (Social benefits)</label><br>
                  <label class="unbold"><input type="checkbox">ทุนประกอบอาชีพ (Fund for living)</label><br>
                  <label class="unbold"><input type="checkbox">ที่อยู่อาศัย (Housing)</label><br>
@@ -97,7 +97,7 @@
             </div>
             <div id="collapse2" class="panel-collapse collapse" role="tabpanel">
               <div class="panel-body">
-                <label class="unbold"><input type="checkbox">ความช่วยเหลือทางการเงิน (Financial Advice)</label><br>
+                <label class="unbold"><input type="checkbox" id="phys_finad">ความช่วยเหลือทางการเงิน (Financial Advice)</label><br>
                 <label class="unbold"><input type="checkbox">สังคมสงเคราะห์ ระบุ (Social benefits)</label><br>
                 <label class="unbold"><input type="checkbox">ทุนประกอบอาชีพ (Fund for living)</label><br>
                 <label class="unbold"><input type="checkbox">ที่อยู่อาศัย (Housing)</label><br>
@@ -231,11 +231,11 @@
         var compoundResult="IT WORKED"
 
         //LOGIC FOR CHECKBOXES HERE
-        if (document.getElementById("marital_divorce").checked && document.getElementById("childyes").checked && document.getElementById("finad_phys").checked) {
+        if (document.getElementById("marital_divorce").checked && document.getElementById("childyes").checked && document.getElementById("phys_finad").checked) {
           createResult(compoundHead, compoundResult)
         }
 
-        if (document.getElementById("finad_emo").checked) {
+        if (document.getElementById("emo_finad").checked) {
           createResult("wendy", "cheung")
         }
 
