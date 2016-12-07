@@ -77,8 +77,8 @@
                  <label class="unbold"><input type="checkbox">จัดหางาน (Finding work)</label><br>
                  <label class="unbold"><input type="checkbox">ด้านกฎหมาย (Legal Advice)</label><br>
                  <label class="unbold"><input type="checkbox">ทนายความสู้คดี (A lawyer to help you manage the case)</label><br>
-                 <label class="unbold"><input type="checkbox">การให้คำปรึกษามืออาชีพ (Professional Counseling)</label><br>
-                 <label class="unbold"><input type="checkbox">การบำบัดกลุ่ม/เครือข่าย (Group therapy/Network)</label><br>
+                 <label class="unbold"><input type="checkbox" id="emo_counseling">การให้คำปรึกษามืออาชีพ (Professional Counseling)</label><br>
+                 <label class="unbold"><input type="checkbox" id="emo_group">การบำบัดกลุ่ม/เครือข่าย (Group therapy/Network)</label><br>
                </div>
             </div>
           </div>
@@ -101,7 +101,7 @@
                 <label class="unbold"><input type="checkbox">ทุนประกอบอาชีพ (Fund for living)</label><br>
                 <label class="unbold"><input type="checkbox">ที่อยู่อาศัย (Housing)</label><br>
                 <label class="unbold"><input type="checkbox">จัดหางาน (Finding work)</label><br>
-                <label class="unbold"><input type="checkbox">ด้านกฎหมาย (Legal Advice)</label><br>
+                <label class="unbold"><input type="checkbox" id="phys_legal">ด้านกฎหมาย (Legal Advice)</label><br>
                 <label class="unbold"><input type="checkbox">ทนายความสู้คดี (A lawyer to help you manage the case)</label><br>
                 <label class="unbold"><input type="checkbox">การให้คำปรึกษามืออาชีพ (Professional Counseling)</label><br>
                 <label class="unbold"><input type="checkbox">การบำบัดกลุ่ม/เครือข่าย (Group therapy/Network)</label><br>
@@ -127,7 +127,7 @@
                 <label class="unbold"><input type="checkbox">ทุนประกอบอาชีพ (Fund for living)</label><br>
                 <label class="unbold"><input type="checkbox">ที่อยู่อาศัย (Housing)</label><br>
                 <label class="unbold"><input type="checkbox">จัดหางาน (Finding work)</label><br>
-                <label class="unbold"><input type="checkbox">ด้านกฎหมาย (Legal Advice)</label><br>
+                <label class="unbold"><input type="checkbox" id="sex_legal">ด้านกฎหมาย (Legal Advice)</label><br>
                 <label class="unbold"><input type="checkbox">ทนายความสู้คดี (A lawyer to help you manage the case)</label><br>
                 <label class="unbold"><input type="checkbox">การให้คำปรึกษามืออาชีพ (Professional Counseling)</label><br>
                 <label class="unbold"><input type="checkbox">การบำบัดกลุ่ม/เครือข่าย (Group therapy/Network)</label><br>
@@ -187,11 +187,33 @@
           </div>
         </div>
 
+        <div class="panel-group">
+          <div class="panel panel-default">
+            <div class="panel-heading">
+              <h4 class="panel-title">
+                <a data-toggle="collapse" href="#collapse6">
+                  ความช่วยเหลือทางด้านแม่เลี้ยงเดี่ยว  <br>
+                  (Single mother help)
+                </a>
+              </h4>
+            </div>
+            <div id="collapse6" class="panel-collapse collapse" role="tabpanel">
+              <div class="panel-body">
+                <label class="unbold"><input type="checkbox">การดูแลเด็ก (Childcare)</label><br>
+                <label class="unbold"><input type="checkbox">ทุนประกอบอาชีพ (Fund for living)</label><br>
+                <label class="unbold"><input type="checkbox">ทนายความสู้คดี (A lawyer to help you manage the case)</label><br>
+                <label class="unbold"><input type="checkbox" id="single_housing">ที่อยู่อาศัย (Housing)</label><br>
+                <label class="unbold"><input type="checkbox">จัดหางาน (Finding work)</label><br>
+              </div>
+            </div>
+          </div>
+        </div>
+
 
       <form>
         <h5 class="text-muted">ความสัมพันธ์ (Who is the abuser?)</h5>
         <label class="radio"><input type="radio" name="abuser">สามี (Husband)</label>
-        <label class="radio"><input type="radio" name="abuser">แฟน (Boyfriend)</label>
+        <label class="radio"><input type="radio" name="abuser" id="boyf">แฟน (Boyfriend)</label>
         <label class="radio"><input type="radio" name="abuser">ญาติ (Relatives)</label>
         <h5>อื่นๆระบุ (Other, please specify)</h5>
         <input type="text" class="form-control" placeholder="Description">
@@ -260,9 +282,23 @@
           createResult("wendy", "cheung")
         }
 
+        if (document.getElementById("phys_legal").checked && document.getElementById("single_housing").checked) {
+          createResult("Legal advice for single mothers facing physical abuse from father of children", "Here you would provide all the legal advice you can provide regarding custody and child support. The woman is separated from her husband but still legally married to him.");
+          createResult("Housing for single mothers facing domestic abuse", "Here you would describe housing options for single mothers")
+        }
+
+        if (document.getElementById("phys_legal").checked && document.getElementById("boyf").checked) {
+          createResult("Legal advice for women who are physically abused by their boyfriends", "Here you would give an explanation of legal codes regarding physical abuse for women not married to their abuser")
+        }
+
+        if (document.getElementById("emo_counseling").checked && document.getElementById("emo_group").checked) {
+          createResult("Counseling for emotional abuse", "Here you would give resources for professional counseling");
+          createResult("Group Therapy for emotional abuse", "Here you would connect women to different group therapy networks FOW has for women facing emotional abuse");
+        }
+
         //LOGIC FOR AGE HERE
-        if (parseInt(document.getElementById("ageinput").value) <18) {
-          createResult("UNDER", "AGE")
+        if (parseInt(document.getElementById("ageinput").value) <18 && document.getElementById("sex_legal")) {
+          createResult("Legal advice for teenagers facing sexual abuse", "Here you would provide information regarding the laws in place regarding sexual abuse for teenagers ");
         }
 
       }
